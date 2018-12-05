@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MVC5Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'MVC5.dbo.Categories' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Categories">
+          <Property Name="Catg_type" Type="varchar" MaxLength="50" />
+          <Property Name="Prog_name" Type="varchar" MaxLength="50" />
+          <Property Name="total_students" Type="int" />
+        </EntityType>-->
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" />
+    <Property Name="Address" Type="varchar" MaxLength="300" />
+    <Property Name="Mobileno" Type="varchar" MaxLength="15" />
+    <Property Name="Birthdate" Type="datetime" />
+    <Property Name="EmailID" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'MVC5.dbo.tbl_fruitanalysis' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="tbl_fruitanalysis">
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="value" Type="int" />
+        </EntityType>-->
+  <EntityType Name="tbl_registration">
+    <Key>
+      <PropertyRef Name="Sr_no" />
+    </Key>
+    <Property Name="Sr_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar(max)" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="City" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tblEmployee">
+    <Key>
+      <PropertyRef Name="EmployeeId" />
+    </Key>
+    <Property Name="EmployeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Department" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Sexo" Type="varchar" MaxLength="50" />
+    <Property Name="FechaNac" Type="varchar" MaxLength="50" />
+    <Property Name="Ciudad_id" Type="int" />
+  </EntityType>
+  <Association Name="FK_Usuario_Usuario1">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="0..1" />
+    <End Role="Usuario1" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Usuario1">
+        <PropertyRef Name="Ciudad_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetCategoriesChart" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_register" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="Name" Type="varchar(max)" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="City" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="Sp_register_byid" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Sr_no" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_register_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Sr_no" Type="int" Mode="In" />
+  </Function>
+  <Function Name="Sp_register_get" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="Sp_register_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Sr_no" Type="int" Mode="In" />
+    <Parameter Name="Email" Type="nvarchar" Mode="In" />
+    <Parameter Name="Password" Type="nvarchar" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="City" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="spAddEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="City" Type="varchar" Mode="In" />
+    <Parameter Name="Department" Type="varchar" Mode="In" />
+    <Parameter Name="Gender" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="spDeleteEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmpId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spGetAllEmployees" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spUpdateEmployee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EmpId" Type="int" Mode="In" />
+    <Parameter Name="Name" Type="varchar" Mode="In" />
+    <Parameter Name="City" Type="varchar" Mode="In" />
+    <Parameter Name="Department" Type="varchar" Mode="In" />
+    <Parameter Name="Gender" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="Usp_InsertUpdateDelete_Customer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="CustomerID" Type="bigint" Mode="In" />
+    <Parameter Name="Name" Type="nvarchar" Mode="In" />
+    <Parameter Name="Mobileno" Type="nvarchar" Mode="In" />
+    <Parameter Name="Address" Type="nvarchar" Mode="In" />
+    <Parameter Name="Birthdate" Type="datetime" Mode="In" />
+    <Parameter Name="EmailID" Type="nvarchar" Mode="In" />
+    <Parameter Name="Query" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="MVC5ModelStoreContainer">
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_registration" EntityType="Self.tbl_registration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEmployee" EntityType="Self.tblEmployee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Usuario_Usuario1" Association="Self.FK_Usuario_Usuario1">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Usuario1" EntitySet="Usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

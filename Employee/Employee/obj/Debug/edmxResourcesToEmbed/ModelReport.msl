@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MVC5ModelStoreContainer" CdmEntityContainer="MVC5Entities">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="MVC5Model.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Mobileno" ColumnName="Mobileno" />
+          <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_registration">
+      <EntityTypeMapping TypeName="MVC5Model.tbl_registration">
+        <MappingFragment StoreEntitySet="tbl_registration">
+          <ScalarProperty Name="Sr_no" ColumnName="Sr_no" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblEmployees">
+      <EntityTypeMapping TypeName="MVC5Model.tblEmployee">
+        <MappingFragment StoreEntitySet="tblEmployee">
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="MVC5Model.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="FechaNac" ColumnName="FechaNac" />
+          <ScalarProperty Name="Ciudad_id" ColumnName="Ciudad_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetCategoriesChart" FunctionName="MVC5Model.Store.GetCategoriesChart">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVC5Model.GetCategoriesChart_Result">
+          <ScalarProperty Name="Catg_type" ColumnName="Catg_type" />
+          <ScalarProperty Name="Prog_name" ColumnName="Prog_name" />
+          <ScalarProperty Name="total_students" ColumnName="total_students" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_register" FunctionName="MVC5Model.Store.Sp_register" />
+    <FunctionImportMapping FunctionImportName="Sp_register_byid" FunctionName="MVC5Model.Store.Sp_register_byid">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVC5Model.Sp_register_byid_Result">
+          <ScalarProperty Name="Sr_no" ColumnName="Sr_no" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_register_delete" FunctionName="MVC5Model.Store.Sp_register_delete" />
+    <FunctionImportMapping FunctionImportName="Sp_register_get" FunctionName="MVC5Model.Store.Sp_register_get">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVC5Model.Sp_register_get_Result">
+          <ScalarProperty Name="Sr_no" ColumnName="Sr_no" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="City" ColumnName="City" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Sp_register_Update" FunctionName="MVC5Model.Store.Sp_register_Update" />
+    <FunctionImportMapping FunctionImportName="spAddEmployee" FunctionName="MVC5Model.Store.spAddEmployee" />
+    <FunctionImportMapping FunctionImportName="spDeleteEmployee" FunctionName="MVC5Model.Store.spDeleteEmployee" />
+    <FunctionImportMapping FunctionImportName="spGetAllEmployees" FunctionName="MVC5Model.Store.spGetAllEmployees">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MVC5Model.spGetAllEmployees_Result">
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spUpdateEmployee" FunctionName="MVC5Model.Store.spUpdateEmployee" />
+    <FunctionImportMapping FunctionImportName="Usp_InsertUpdateDelete_Customer" FunctionName="MVC5Model.Store.Usp_InsertUpdateDelete_Customer" />
+  </EntityContainerMapping>
+</Mapping>
